@@ -78,7 +78,7 @@ const Navbar = () => {
         (<div  id="menudown" onMouseLeave={handleMouseLeave} >
 
           <div>
-          {userdata?.email ? <h3> <i class="fa-regular fa-user"></i> Hello User <br /> <small>{userdata.name}</small>  </h3> : 
+          {userdata?.email ? <h3> <i class="fa-regular fa-user"></i> Hello User <br /> <small>{userdata.name} </small><span onClick={() => router("/Profile")} style={{marginRight:"3%"}}><i class="fa-solid fa-gear"></i></span>  </h3> : 
           
            <>
            <h3>  Hello User </h3>
