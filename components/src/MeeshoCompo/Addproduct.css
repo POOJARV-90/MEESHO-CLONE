@@ -1,0 +1,45 @@
+#body-add{
+    width: 100%;
+    margin-top: 160px;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+#body-add>form{
+    color: rgb(180, 21, 87);
+    padding: 2%;
+    margin: auto;
+    width: 50%;
+    height: 300px;
+    background-repeat: no-repeat;
+    border: 2px solid rgb(228, 115, 162);
+    background-position: 100% 90%;
+    right: 0%;
+    background-size: contain;
+    /* background: 100% 100%; */
+    
+
+    background-image: url("https://franchiseindia.s3.ap-south-1.amazonaws.com/opp/article/english/images/1816829259.jpg"); 
+}
+
+#body-add>form>h4{
+    text-decoration: underline;
+    margin-bottom: 1%;
+    color:#f22d92 ;
+    font-size: 25px;
+}
+
+#body-add>form>input{
+    margin-top: 1%;
+    border: 1px solid rgb(219, 176, 194);
+    padding: 1%;
+    width: 50%;
+}
+#body-add>form>input:last-child{
+    width: 20%;
+    margin-left: 80%;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(180, 21, 87);
+}

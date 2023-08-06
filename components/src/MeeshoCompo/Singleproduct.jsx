@@ -128,7 +128,7 @@ const Singleproduct = () => {
           {userData?.role === "Seller" ? (
             <button onClick={uptoDate} > <i class="fa-regular fa-pen-to-square"></i>Edit Product </button>)
             :
-            (<button> <i className="fa-solid fa-cart-shopping"></i> Add to Cart </button>) }
+            (<button onClick={addCart}  > <i className="fa-solid fa-cart-shopping"></i> Add to Cart </button>) }
 
 
 
@@ -243,7 +243,7 @@ const Singleproduct = () => {
 
       <> {allowUpdate ? (
         <div  className="update-form-container" style={{marginTop:"1px solid grey"}}>
-           <p style={{textAlign:"right", color:"black", fontWeight:"700"}} onClick={closeUpate}>X</p>
+           <p style={{textAlign:"right", color:"white", fontWeight:"700"}} onClick={closeUpate}>X</p>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <form onSubmit={handleSubmit}>
               
@@ -316,7 +316,7 @@ const Singleproduct = () => {
                 />
                 <br />
                 <input
-                  style={{border:"2px solid #ff3e6c",fontSize:"17px",padding:"2%",borderRadius:"25px"}}
+                  style={{border:"none",fontSize:"17px",padding:"2%",borderRadius:"25px" ,}}
                   type="submit"
                   value="Update Product"
                  

@@ -569,7 +569,7 @@ line-height: 30px;
 }
 
 .update-form-container {
-    background: linear-gradient(to right, #ca6d6d, #f8d5d4);
+    background: linear-gradient(to right, #dd7474, #f8d5d4);
     height: 360px;
     font-weight: 500;
     color: rgb(245, 234, 234);
@@ -582,7 +582,7 @@ line-height: 30px;
     z-index: 1;
     /* background: #ffffff; */
     padding: 10px;
-    border: 1px solid #808080;
+    /* border: 1px solid #808080; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     /* Add any other styles you want for the form container */
   }
