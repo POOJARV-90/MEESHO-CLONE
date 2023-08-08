@@ -11,6 +11,7 @@ import Singleproduct from './MeeshoCompo/Singleproduct';
 import Cart from './MeeshoCompo/Cart';
 import AddProduct from './MeeshoCompo/AddProduct';
 import Profile from './MeeshoCompo/Profile';
+import Mens from './MeeshoCompo/Mens';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
   <Route exact path='/Cart' element={<Cart/>}/>
   <Route exact path='/AddProduct' element={<AddProduct/>}/>
   <Route exact path='/Profile' element={<Profile/>}/>
+  <Route exact path='/Mens' element={<Mens/>}/>
   
   
   </Routes>
