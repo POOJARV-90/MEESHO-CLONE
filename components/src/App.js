@@ -29,7 +29,6 @@ function App() {
   <Route exact path='/Profile' element={<Profile/>}/>
   <Route exact path='/Mens' element={<Mens/>}/>
   
-  
   </Routes>
   <Footer/>
       
