@@ -6,15 +6,21 @@ import {Authcontext} from "./Context/Authcontext"
 const Navbar = () => {
   const [userdata, setUserdata] = useState();
   const [display, setDisplay] = useState(false);
-  const { state, logout } = useContext(Authcontext);
+  const { state } = useContext(Authcontext);
   const router = useNavigate();
+
+
+  console.log(userdata,"usedata");
+  console.log(state,"stae");
   useEffect(() => {
     if (state?.user) {
       setUserdata(state?.user);
+
     } else {
       setUserdata({});
     }
   }, [state]);
+
   const handleMouseEnter = () => {
     setDisplay(true);
   };
@@ -22,6 +28,14 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setDisplay(false);
   };
+
+  function logout() {    ///tobechange
+    localStorage.removeItem("Token")
+
+    setUserdata({})
+    // setDisplay(false)
+    router('/')
+}
 
   return (
     <div>
