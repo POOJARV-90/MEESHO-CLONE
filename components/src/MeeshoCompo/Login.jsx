@@ -2,43 +2,42 @@ import React, { useContext, useState } from 'react';
 import "../MeeshoCompo/Login.css"
 import { useNavigate } from "react-router-dom";
 import {Authcontext} from "./Context/Authcontext"
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-  const {state , login} = useContext(Authcontext)
+  const {state , dispatch } = useContext(Authcontext)
   const [userdata, setUserdata] = useState({ email: "", password: "" ,role :""});
   const router = useNavigate();
 
   const hangleChange = (event) => {
     setUserdata({ ...userdata, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (userdata.email && userdata.password) {
-      const users = JSON.parse(localStorage.getItem("Users")); //access to LS
-
-      var flag = false;
-      for (var i = 0; i < users.length; i++) {
-        if (
-          users[i].email == userdata.email &&
-          users[i].password == userdata.password
-        ) {
-          flag = true;
-          localStorage.setItem(("CurrentUser"),JSON.stringify( users[i]));
-          login(users[i]);
-          alert("login succesfull")
-          setUserdata({email:"",password:"",role :"" })
-          router("/");
-          break;
-        }
-      }
-      if (flag == false) {
-           alert("Please check credentials.");   //RETURN
-      }
+    if ( userdata.email && userdata.password) {
       
+            const response = await axios.post("http://localhost:8000/login", { userdata });
+            if (response.data.success) {
+           
+
+            dispatch({
+              type: 'LOGIN',
+              payload: response.data.user
+          })
+          localStorage.setItem("token", JSON.stringify(response.data.token))
+                setUserdata({ email: "", password: "" })
+                router('/')
+                toast.success(response.data.message)
+            } else {
+                toast.error(response.data.message)
+            }
+
+       
     } else {
-      alert("Please submit all details");
+        toast.error("All fields are mandtory.")
     }
-  };
+}
 
   return (
     <div>

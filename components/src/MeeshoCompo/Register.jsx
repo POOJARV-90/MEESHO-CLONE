@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -8,6 +10,7 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
+    confirmpassword:"",
     role: "Buyer",
   });
 
@@ -18,29 +21,26 @@ const Register = () => {
   };
   console.log(userdata);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (userdata.name && userdata.email && userdata.password) {
-      const array = JSON.parse(localStorage.getItem("Users")) || [];
+    if (userdata.name && userdata.email && userdata.password && userdata.confirmpassword && userdata.role) {
+        if (userdata.password === userdata.confirmpassword) {
+            const response = await axios.post("http://localhost:8000/register", { userdata });
+            if (response.data.success) {
+                setUserdata({ name: "", email: "", password: "", confirmpassword: "", role: "Buyer" })
+                router('/Login')
+                toast.success(response.data.message)
+            } else {
+                toast.error(response.data.message)
+            }
 
-      const userobject = {
-        name: userdata.name,
-        email: userdata.email,
-        password: userdata.password,
-        role: userdata.role,
-        cart: [],
-      };
-      array.push(userobject);
-      localStorage.setItem("Users", JSON.stringify(array));
-
-      setUserdata({ name: "", email: "", password: "", role: "Buyer" });
-      router("/Login");
-      alert("Registerd succesfully");
+        } else {
+            toast.error("Password and Confirm Password not Matched.")
+        }
     } else {
-      alert("please submit the require details");
+        toast.error("All fields are mandtory.")
     }
-  };
-
+}
   function selectrole(event) {
     // console.log(event.target.value ,"role")
     setUserdata({ ...userdata, ["role"]: event.target.value });
@@ -93,6 +93,15 @@ name="name"
           onChange={handlechange}
           name="password" 
           placeholder=" Password" /> <br /> 
+
+<br />
+
+<label for=""> Confirm Password</label> <br />
+<input  value={userdata.confirmpassword}
+  type="password"
+  onChange={handlechange}
+  name="confirmpassword" 
+  placeholder=" Password" /> <br /> 
 
 
         <div>
